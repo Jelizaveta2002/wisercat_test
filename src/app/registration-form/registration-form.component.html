@@ -1,0 +1,29 @@
+<div class="container">
+  <div>
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <app-header size="lg" weight="bl" [centered]="true">
+        Working experience form
+      </app-header>
+      <div>
+        <label for="username">Name</label>
+        <app-input id="username" type="text" placeholder="Name" (valueChange)="registrationForm.controls['username'].setValue($event)"></app-input>
+      </div>
+      <div>
+        <label for="surname">Surname</label>
+        <app-input id="surname" type="text" placeholder="Surname" (valueChange)="registrationForm.controls['surname'].setValue($event)"></app-input>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <app-input id="email" type="email" placeholder="Email" (valueChange)="registrationForm.controls['email'].setValue($event)"></app-input>
+      </div>
+      <div>
+        <label for="experience">Experience</label>
+        <app-input id="experience" type="text" placeholder="Experience" (valueChange)="registrationForm.controls['experience'].setValue($event)"></app-input>
+      </div>
+      <div class="button-container">
+        <app-button label="Register" type="submit" ></app-button>
+        <app-button label="Register" type="submit" ></app-button>
+      </div>
+    </form>
+  </div>
+</div>
