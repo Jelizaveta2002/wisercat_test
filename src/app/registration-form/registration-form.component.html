@@ -1,35 +1,44 @@
 <div class="container">
   <div>
+    <app-message [text]="displayMessage" [type]="messageType"></app-message>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <app-header size="lg" weight="bl" [centered]="true">
         Working experience form
       </app-header>
-      <div>
-        <label for="name">Name</label>
-        <app-input id="name" type="text" placeholder="Name" formControlName="name"></app-input>
-        <div *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
-          <small *ngIf="form.get('name')?.errors?.['required']">Name is required.</small>
+        <div>
+          <label for="name">Name</label>
+          <app-input id="name" type="name" placeholder="Name" formControlName="name"
+                     (focusEvent)="nameFocused = true"
+                     (blurEvent)="nameFocused = false"></app-input>
+          <div *ngIf="form.get('name')?.invalid && nameFocused">
+            <small *ngIf="form.get('name')?.errors?.['required']">Name is required.</small>
+          </div>
         </div>
-      </div>
       <div>
         <label for="surname">Surname</label>
-        <app-input id="surname" type="text" placeholder="Surname" formControlName="surname"></app-input>
-        <div *ngIf="form.get('surname')?.touched && form.get('surname')?.invalid">
+        <app-input id="surname" type="text" placeholder="Surname" formControlName="surname"
+                   (focusEvent)="surnameFocused = true"
+                   (blurEvent)="surnameFocused = false"></app-input>
+        <div *ngIf="form.get('surname')?.invalid && surnameFocused">
           <small *ngIf="form.get('surname')?.errors?.['required']">Surname is required.</small>
         </div>
       </div>
       <div>
         <label for="email">Email</label>
-        <app-input id="email" type="email" placeholder="Email" formControlName="email"></app-input>
-        <div *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+        <app-input id="email" type="email" placeholder="Email" formControlName="email"
+                   (focusEvent)="emailFocused = true"
+                   (blurEvent)="emailFocused = false"></app-input>
+        <div *ngIf="form.get('email')?.invalid && emailFocused">
           <small *ngIf="form.get('email')?.errors?.['required']">Email is required.</small>
           <small *ngIf="form.get('email')?.errors?.['email']">Please enter a valid email address.</small>
         </div>
       </div>
       <div>
         <label for="workingExperience">Experience</label>
-        <app-input id="workingExperience" type="text" placeholder="Experience" formControlName="workingExperience"></app-input>
-        <div *ngIf="form.get('workingExperience')?.touched && form.get('workingExperience')?.invalid">
+        <app-input id="workingExperience" type="text" placeholder="Experience" formControlName="workingExperience"
+                   (focusEvent)="experienceFocused = true"
+                   (blurEvent)="experienceFocused = false"></app-input>
+        <div *ngIf="form.get('workingExperience')?.invalid && experienceFocused">
           <small *ngIf="form.get('workingExperience')?.errors?.['required']">Experience is required.</small>
           <small *ngIf="form.get('workingExperience')?.errors?.['decimalPlaces']">Only numbers with 1 decimal place allowed.</small>
         </div>

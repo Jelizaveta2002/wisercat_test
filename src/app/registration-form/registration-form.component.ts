@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
-  FormControl,
   FormGroup,
   ReactiveFormsModule,
   ValidatorFn,
@@ -12,6 +11,7 @@ import {ButtonComponent} from "../ui/button/button.component";
 import {InputComponent} from "../ui/input/input.component";
 import {HeaderComponent} from "../ui/header/header.component";
 import {CommonModule} from "@angular/common";
+import {MessageComponent} from "../ui/message/message.component";
 
 @Component({
   selector: 'app-registration-form',
@@ -21,14 +21,20 @@ import {CommonModule} from "@angular/common";
     ButtonComponent,
     InputComponent,
     HeaderComponent,
-    CommonModule
+    CommonModule,
+    MessageComponent
   ],
   templateUrl: './registration-form.component.html',
   styleUrl: './registration-form.component.css'
 })
 export class RegistrationFormComponent {
   form: FormGroup;
-
+  emailFocused: boolean = false;
+  nameFocused: boolean = false;
+  surnameFocused: boolean = false;
+  experienceFocused: boolean = false;
+  displayMessage: string = '';
+  messageType: 'info' | 'error' | 'success' = 'info';
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       name: ['', Validators.required],
@@ -40,14 +46,16 @@ export class RegistrationFormComponent {
 
   onSubmit(): void {
     if (this.form.valid) {
-      console.log(this.form.value);
-    } else if (this.form.get('name')) {
-      console.log('invalid!');
+      this.displayMessage = 'Registration success.';
+      this.messageType = 'success';
+      this.form.reset();
+    } else {
+      this.displayMessage = 'Please check the form for errors.';
+      this.messageType = 'error';
     }
   }
   resetForm() {
     this.form.reset();
-    console.log('reset')
   }
 
   decimalPlacesValidator(decimalPlaces: number = 1): ValidatorFn {

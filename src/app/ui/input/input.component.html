@@ -1,6 +1,7 @@
 <input [type]="type"
        [attr.value]="value"
        (input)="onInput($event)"
-       (blur)="onTouched()"
        [placeholder]="placeholder"
-       [disabled]="disabled">
+       [disabled]="disabled"
+       (focus)="focusEvent.emit()"
+       (blur)="blurEvent.emit()">

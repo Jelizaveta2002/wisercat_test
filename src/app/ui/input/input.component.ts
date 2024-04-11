@@ -19,6 +19,8 @@ export class InputComponent implements ControlValueAccessor {
   @Input() type: string = 'text';
   @Input() placeholder: string = '';
   @Input() disabled: boolean = false;
+  @Output() focusEvent = new EventEmitter<void>();
+  @Output() blurEvent = new EventEmitter<void>();
 
   value: string | number = '';
 
