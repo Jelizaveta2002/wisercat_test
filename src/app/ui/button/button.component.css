@@ -8,22 +8,20 @@
 }
 
 .btn:hover {
-  background-color: #0056b3;
+  background-color: gray;
 }
 
 .submit-button {
-  background-color: darkseagreen;
+  background-color: rgba(138, 43, 226, 0.65);
+}
+
+.submit-button:hover {
+  background-color: rgba(138, 43, 226, 0.97);
 }
 
 .reset-button {
-  background-color: #007bff;
+  background-color: rgba(56, 31, 77, 0.28);
 }
-
-.default-button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  color: white;
-  transition: background-color 0.3s ease;
+.reset-button:hover {
+  background-color: rgba(56, 31, 77, 0.5);
 }

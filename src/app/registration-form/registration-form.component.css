@@ -13,12 +13,13 @@ form {
   align-items: center;
   padding: 30px;
   margin: auto;
-  background-color: #e1a8e1;
+  background-color: rgba(225, 168, 225, 0.91);
   color: #FFFFFF;
 }
 
 small{
-  color: #e53935;
+  color: blueviolet;
+  font-weight: bold;
 }
 
 div {
@@ -27,7 +28,7 @@ div {
 
 label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
 }
 
 

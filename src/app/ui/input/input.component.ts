@@ -18,7 +18,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 export class InputComponent implements ControlValueAccessor {
   @Input() type: string = 'text';
   @Input() placeholder: string = '';
-  @Input() disabled: boolean = false;
   @Output() focusEvent = new EventEmitter<void>();
   @Output() blurEvent = new EventEmitter<void>();
 
@@ -46,9 +45,5 @@ export class InputComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
   }
 }

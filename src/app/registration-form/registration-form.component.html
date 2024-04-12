@@ -6,7 +6,7 @@
         Working experience form
       </app-header>
         <div>
-          <label for="name">Name</label>
+          <label for="name" style="font-size: 16px; color: white; font-weight: bold;">Name</label>
           <app-input id="name" type="name" placeholder="Name" formControlName="name"
                      (focusEvent)="nameFocused = true"
                      (blurEvent)="nameFocused = false"></app-input>
@@ -15,7 +15,7 @@
           </div>
         </div>
       <div>
-        <label for="surname">Surname</label>
+        <label for="surname" style="font-size: 16px; color: white; font-weight: bold;">Surname</label>
         <app-input id="surname" type="text" placeholder="Surname" formControlName="surname"
                    (focusEvent)="surnameFocused = true"
                    (blurEvent)="surnameFocused = false"></app-input>
@@ -24,7 +24,7 @@
         </div>
       </div>
       <div>
-        <label for="email">Email</label>
+        <label for="email" style="font-size: 16px; color: white; font-weight: bold;">Email</label>
         <app-input id="email" type="email" placeholder="Email" formControlName="email"
                    (focusEvent)="emailFocused = true"
                    (blurEvent)="emailFocused = false"></app-input>
@@ -34,7 +34,7 @@
         </div>
       </div>
       <div>
-        <label for="workingExperience">Experience in months</label>
+        <label for="workingExperience" style="font-size: 16px; color: white; font-weight: bold;">Experience in months</label>
         <app-input id="workingExperience" type="text" placeholder="Experience" formControlName="workingExperience"
                    (focusEvent)="experienceFocused = true"
                    (blurEvent)="experienceFocused = false"></app-input>
