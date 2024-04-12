@@ -1,20 +1,20 @@
 input {
   display: flex;
-  min-width: 300px;
-  min-height: 40px;
-  padding: 6px 12px;
+  min-width: 200px; /* Reduced from 300px */
+  min-height: 30px; /* Reduced from 40px */
+  padding: 4px 8px; /* Reduced from 6px 12px */
   align-items: center;
   flex-shrink: 0;
   border-radius: 0;
   border: none;
   background: #FFF;
-  margin-bottom: 10px;
-  border-bottom: transparent;
-  border-bottom: 3px solid rosybrown;
+  border-bottom: 3px solid rosybrown; /* Simplified redundant property */
 }
+
 input:focus {
   outline: none;
   border-bottom: 3px solid blueviolet;
 }
+
 
 

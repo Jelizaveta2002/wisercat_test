@@ -2,7 +2,7 @@
   <div>
     <app-message [text]="displayMessage" [type]="messageType"></app-message>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <app-header size="lg" weight="bl" [centered]="true">
+      <app-header size="sm" weight="bl" [centered]="true">
         Working experience form
       </app-header>
         <div>
@@ -30,17 +30,17 @@
                    (blurEvent)="emailFocused = false"></app-input>
         <div *ngIf="form.get('email')?.invalid && emailFocused">
           <small *ngIf="form.get('email')?.errors?.['required']">Email is required.</small>
-          <small *ngIf="form.get('email')?.errors?.['email']">Please enter a valid email address.</small>
+          <small *ngIf="form.get('email')?.errors?.['email']">Enter a valid email address.</small>
         </div>
       </div>
       <div>
-        <label for="workingExperience">Experience</label>
+        <label for="workingExperience">Experience in months</label>
         <app-input id="workingExperience" type="text" placeholder="Experience" formControlName="workingExperience"
                    (focusEvent)="experienceFocused = true"
                    (blurEvent)="experienceFocused = false"></app-input>
         <div *ngIf="form.get('workingExperience')?.invalid && experienceFocused">
           <small *ngIf="form.get('workingExperience')?.errors?.['required']">Experience is required.</small>
-          <small *ngIf="form.get('workingExperience')?.errors?.['decimalPlaces']">Only numbers with 1 decimal place allowed.</small>
+          <small *ngIf="form.get('workingExperience')?.errors?.['decimalPlaces']">Number (up to 1 decimal place).</small>
         </div>
       </div>
       <div class="button-container">

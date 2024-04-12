@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectorRef, Component} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -35,7 +35,7 @@ export class RegistrationFormComponent {
   experienceFocused: boolean = false;
   displayMessage: string = '';
   messageType: 'info' | 'error' | 'success' = 'info';
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private cd: ChangeDetectorRef) {
     this.form = this.fb.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],
@@ -45,15 +45,21 @@ export class RegistrationFormComponent {
   }
 
   onSubmit(): void {
-    if (this.form.valid) {
-      this.displayMessage = 'Registration success.';
-      this.messageType = 'success';
-      this.form.reset();
-    } else {
-      this.displayMessage = 'Please check the form for errors.';
-      this.messageType = 'error';
-    }
+    this.displayMessage = '';
+    this.messageType = 'info';
+    this.cd.detectChanges();
+    setTimeout(() => {
+      if (this.form.valid) {
+        this.displayMessage = 'Registration success.';
+        this.messageType = 'success';
+      } else {
+        this.displayMessage = 'Please check the form for errors.';
+        this.messageType = 'error';
+      }
+      this.cd.detectChanges();
+    }, 0);
   }
+
   resetForm() {
     this.form.reset();
   }

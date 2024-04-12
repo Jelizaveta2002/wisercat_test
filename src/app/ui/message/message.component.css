@@ -1,18 +1,32 @@
 .alert {
-  padding: 20px;
-  color: white;
-  border-radius: 15px;
-  margin: 10px 0;
+  display: flex;
+  border-radius: 1.5rem;
+  padding: 0.75rem 1rem;
+  animation: fade 0.5s ease;
+}
+
+.message-container{
+  position: fixed;
+  top: 10px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .success {
   background-color: #4caf50;
+  color: #FFFFFF;
 }
 
 .error {
   background-color: #e53935;
+  color: #FFFFFF;
 }
 
 .info {
   background-color: #2196f3;
+  color: #FFFFFF;
 }
