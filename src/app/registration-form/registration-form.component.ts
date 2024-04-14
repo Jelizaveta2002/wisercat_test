@@ -37,10 +37,10 @@ export class RegistrationFormComponent {
   messageType: 'info' | 'error' | 'success' = 'info';
   constructor(private fb: FormBuilder, private cd: ChangeDetectorRef) {
     this.form = this.fb.group({
-      name: ['', Validators.required],
-      surname: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      workingExperience: ['', [Validators.required, this.decimalPlacesValidator(1)]],
+      name: ['', [Validators.required, this.whitespaceValidator()]],
+      surname: ['', [Validators.required, this.whitespaceValidator()]],
+      email: ['', [Validators.required, Validators.email, this.whitespaceValidator()]],
+      workingExperience: ['', [Validators.required, this.decimalPlacesValidator(1), this.whitespaceValidator()]],
     });
   }
 
@@ -76,6 +76,15 @@ export class RegistrationFormComponent {
         isValid = decimalPartLength <= decimalPlaces;
       }
       return isNumber && isValid ? null : { 'decimalPlaces': { value: control.value } };
+    };
+  }
+
+  whitespaceValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      if (!control.value) return null;
+      const isWhitespaceExist = (control.value || '').trim().length === 0;
+      let isValid = !isWhitespaceExist;
+      return isValid ? null : { 'whiteSpaces': { value: control.value } };
     };
   }
 }

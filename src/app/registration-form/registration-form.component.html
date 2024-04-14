@@ -5,15 +5,16 @@
       <app-header size="sm" weight="bl" [centered]="true">
         Working experience form
       </app-header>
-        <div>
-          <label for="name" style="font-size: 16px; color: white; font-weight: bold;">Name</label>
-          <app-input id="name" type="name" placeholder="Name" formControlName="name"
-                     (focusEvent)="nameFocused = true"
-                     (blurEvent)="nameFocused = false"></app-input>
-          <div *ngIf="form.get('name')?.invalid && nameFocused">
-            <small *ngIf="form.get('name')?.errors?.['required']">Name is required.</small>
-          </div>
+      <div>
+        <label for="name" style="font-size: 16px; color: white; font-weight: bold;">Name</label>
+        <app-input id="name" type="name" placeholder="Name" formControlName="name"
+                   (focusEvent)="nameFocused = true"
+                   (blurEvent)="nameFocused = false"></app-input>
+        <div *ngIf="form.get('name')?.invalid && nameFocused">
+          <small *ngIf="form.get('name')?.errors?.['required']">Name is required.</small>
+          <small *ngIf="form.get('name')?.errors?.['whiteSpaces']">Must not contain only spaces.</small>
         </div>
+      </div>
       <div>
         <label for="surname" style="font-size: 16px; color: white; font-weight: bold;">Surname</label>
         <app-input id="surname" type="text" placeholder="Surname" formControlName="surname"
@@ -21,6 +22,7 @@
                    (blurEvent)="surnameFocused = false"></app-input>
         <div *ngIf="form.get('surname')?.invalid && surnameFocused">
           <small *ngIf="form.get('surname')?.errors?.['required']">Surname is required.</small>
+          <small *ngIf="form.get('surname')?.errors?.['whiteSpaces']">Must not contain only spaces.</small>
         </div>
       </div>
       <div>
@@ -30,6 +32,7 @@
                    (blurEvent)="emailFocused = false"></app-input>
         <div *ngIf="form.get('email')?.invalid && emailFocused">
           <small *ngIf="form.get('email')?.errors?.['required']">Email is required.</small>
+          <small *ngIf="form.get('email')?.errors?.['whiteSpaces']">Must not contain only spaces.</small>
           <small *ngIf="form.get('email')?.errors?.['email']">Enter a valid email address.</small>
         </div>
       </div>
@@ -41,6 +44,7 @@
         <div *ngIf="form.get('workingExperience')?.invalid && experienceFocused">
           <small *ngIf="form.get('workingExperience')?.errors?.['required']">Experience is required.</small>
           <small *ngIf="form.get('workingExperience')?.errors?.['decimalPlaces']">Number (up to 1 decimal place).</small>
+          <small *ngIf="form.get('workingExperience')?.errors?.['whiteSpaces']">Must not contain only spaces.</small>
         </div>
       </div>
       <div class="button-container">
@@ -50,4 +54,3 @@
     </form>
   </div>
 </div>
-
